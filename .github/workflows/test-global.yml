@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+
+  workflow_dispatch:
+    
+jobs:
+  nodeJsBaselineAptCompatibility:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install -g @commitlint/cli @commitlint/config-conventional
+      
+      - name: Create config
+        run: |
+          echo "module.exports = { extends: '@commitlint/config-conventional' }" > commitlint.config.js
+      
+      - name: Run commitlint
+        run: echo "asd" | commitlint
+
+
