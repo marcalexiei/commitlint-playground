@@ -1,4 +1,4 @@
-name: CI
+name: test global invalid
 
 on:
   push:
